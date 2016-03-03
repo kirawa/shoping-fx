@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+
+<GridPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml" fx:controller="com.imc.shoping.fx.FXMLController">
+    <children>
+      <WebView fx:id="webView" GridPane.rowIndex="1" />
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Виджеты">
+            <items>
+                <CheckMenuItem fx:id="checkMenuCostWidgetController" selected="true" text="Потраченные средста" onAction="#costWidgetController"/>
+                <CheckMenuItem fx:id="checkMenuCatWidgetController" selected="true" text="Категории" onAction="#catWidgetController"/>
+                <CheckMenuItem fx:id="checkMenuPlacesWidgetController" selected="true" text="Места" onAction="#placesWidgetController"/>
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>

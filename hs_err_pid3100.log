@@ -1,0 +1,152 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (signature.cpp:308), pid=3100, tid=1012
+#  Error: ShouldNotReachHere()
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_65-b17) (build 1.8.0_65-b17)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.65-b01 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000227e000):  JavaThread "main" [_thread_in_vm, id=1012, stack(0x0000000002450000,0x0000000002550000)]
+
+Stack: [0x0000000002450000,0x0000000002550000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000054e5d800 JavaThread "C1 CompilerThread1" daemon [_thread_blocked, id=1216, stack(0x00000000563c0000,0x00000000564c0000)]
+  0x0000000054e0a800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=1872, stack(0x00000000561b0000,0x00000000562b0000)]
+  0x0000000054e08800 JavaThread "Attach Listener" daemon [_thread_blocked, id=340, stack(0x0000000055fa0000,0x00000000560a0000)]
+  0x0000000054e07800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=1028, stack(0x0000000055d00000,0x0000000055e00000)]
+  0x0000000054dac800 JavaThread "Finalizer" daemon [_thread_blocked, id=4320, stack(0x0000000055a60000,0x0000000055b60000)]
+  0x0000000054da3800 JavaThread "Reference Handler" daemon [_thread_blocked, id=3720, stack(0x0000000055900000,0x0000000055a00000)]
+=>0x000000000227e000 JavaThread "main" [_thread_in_vm, id=1012, stack(0x0000000002450000,0x0000000002550000)]
+
+Other Threads:
+  0x0000000054d9d800 VMThread [stack: 0x0000000055750000,0x0000000055850000] [id=3672]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000000000227c700] AdapterHandlerLibrary_lock - owner thread: 0x000000000227e000
+
+Heap:
+ PSYoungGen      total 18944K, used 983K [0x00000000eab00000, 0x00000000ec000000, 0x0000000100000000)
+  eden space 16384K, 6% used [0x00000000eab00000,0x00000000eabf5d38,0x00000000ebb00000)
+  from space 2560K, 0% used [0x00000000ebd80000,0x00000000ebd80000,0x00000000ec000000)
+  to   space 2560K, 0% used [0x00000000ebb00000,0x00000000ebb00000,0x00000000ebd80000)
+ ParOldGen       total 44032K, used 0K [0x00000000c0000000, 0x00000000c2b00000, 0x00000000eab00000)
+  object space 44032K, 0% used [0x00000000c0000000,0x00000000c0000000,0x00000000c2b00000)
+ Metaspace       used 2155K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 236K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x0000000011be0000,0x0000000011df0000] byte_map_base: 0x00000000115e0000
+
+Marking Bits: (ParMarkBitMap*) 0x000000006b9fa5b0
+ Begin Bits: [0x0000000012270000, 0x0000000013270000)
+ End Bits:   [0x0000000013270000, 0x0000000014270000)
+
+Polling page: 0x0000000000430000
+
+CodeCache: size=245760Kb used=1025Kb max_used=1036Kb free=244734Kb
+ bounds [0x0000000002820000, 0x0000000002a90000, 0x0000000011820000]
+ total_blobs=219 nmethods=1 adapters=134
+ compilation: enabled
+
+Compilation events (2 events):
+Event: 0.081 Thread 0x0000000054e5d800    1       3       java.lang.String::length (6 bytes)
+Event: 0.081 Thread 0x0000000054e5d800 nmethod 1 0x000000000291fd50 code [0x000000000291fea0, 0x000000000291fff0]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (2 events):
+Event: 0.051 Thread 0x000000000227e000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000eab130d8) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\sÎÐ®í»8ª?
+Event: 0.051 Thread 0x000000000227e000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000eab133c0) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\share\vm\prims\jni.
+
+Events (10 events):
+Event: 0.082 loading class java/lang/ClassValue$Identity
+Event: 0.082 loading class java/lang/ClassValue$Identity done
+Event: 0.082 loading class java/lang/ClassValue$Version
+Event: 0.082 loading class java/lang/ClassValue$Version done
+Event: 0.082 loading class java/lang/invoke/MemberName$Factory
+Event: 0.082 loading class java/lang/invoke/MemberName$Factory done
+Event: 0.082 loading class java/lang/invoke/MethodHandleStatics
+Event: 0.082 loading class java/lang/invoke/MethodHandleStatics done
+Event: 0.082 loading class java/lang/invoke/MethodHandleStatics$1
+Event: 0.082 loading class java/lang/invoke/MethodHandleStatics$1 done
+
+
+Dynamic libraries:
+0x000000013f5a0000 - 0x000000013f5d7000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\java.exe
+0x00000000772e0000 - 0x0000000077489000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00000000770c0000 - 0x00000000771df000 	C:\Windows\system32\kernel32.dll
+0x000007fefd340000 - 0x000007fefd3ab000 	C:\Windows\system32\KERNELBASE.dll
+0x000007fefef30000 - 0x000007feff00b000 	C:\Windows\system32\ADVAPI32.dll
+0x000007fefdba0000 - 0x000007fefdc3f000 	C:\Windows\system32\msvcrt.dll
+0x000007feff530000 - 0x000007feff54f000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007fefddf0000 - 0x000007fefdf1d000 	C:\Windows\system32\RPCRT4.dll
+0x00000000771e0000 - 0x00000000772da000 	C:\Windows\system32\USER32.dll
+0x000007fefd8f0000 - 0x000007fefd957000 	C:\Windows\system32\GDI32.dll
+0x000007fefdf20000 - 0x000007fefdf2e000 	C:\Windows\system32\LPK.dll
+0x000007fefecc0000 - 0x000007fefed89000 	C:\Windows\system32\USP10.dll
+0x000007fefbc80000 - 0x000007fefbe74000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_fa396087175ac9ac\COMCTL32.dll
+0x000007fefdd70000 - 0x000007fefdde1000 	C:\Windows\system32\SHLWAPI.dll
+0x000007feff010000 - 0x000007feff03e000 	C:\Windows\system32\IMM32.DLL
+0x000007feff120000 - 0x000007feff229000 	C:\Windows\system32\MSCTF.dll
+0x0000000071670000 - 0x0000000071742000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\msvcr100.dll
+0x000000006b1f0000 - 0x000000006ba79000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\server\jvm.dll
+0x000007fefa8b0000 - 0x000007fefa8b9000 	C:\Windows\system32\WSOCK32.dll
+0x000007feff230000 - 0x000007feff27d000 	C:\Windows\system32\WS2_32.dll
+0x000007fefd8e0000 - 0x000007fefd8e8000 	C:\Windows\system32\NSI.dll
+0x000007fefb470000 - 0x000007fefb4ab000 	C:\Windows\system32\WINMM.dll
+0x000007fefc380000 - 0x000007fefc38c000 	C:\Windows\system32\VERSION.dll
+0x00000000774a0000 - 0x00000000774a7000 	C:\Windows\system32\PSAPI.DLL
+0x00000000717e0000 - 0x00000000717ef000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\verify.dll
+0x00000000717b0000 - 0x00000000717d9000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\java.dll
+0x0000000071790000 - 0x00000000717a6000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\zip.dll
+0x000007fefdf30000 - 0x000007fefecb8000 	C:\Windows\system32\SHELL32.dll
+0x000007feff280000 - 0x000007feff483000 	C:\Windows\system32\ole32.dll
+0x000007fefd230000 - 0x000007fefd23f000 	C:\Windows\system32\profapi.dll
+
+VM Arguments:
+java_command: C:\Users\ra.grinfeld\Documents\NetBeansProjects\shoping-fx\target/shoping-fx-1.0-SNAPSHOT.jar
+java_class_path (initial): C:\Users\ra.grinfeld\Documents\NetBeansProjects\shoping-fx\target/shoping-fx-1.0-SNAPSHOT.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_65
+PATH=C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Skype\Phone\;C:\Windows\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\
+USERNAME=ra.grinfeld
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 16 Model 6 Stepping 3, AuthenticAMD
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 (6.1.7601.18015)
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 16 model 6 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, popcnt, mmxext, 3dnowpref, lzcnt, sse4a, tsc, tscinvbit, tscinv
+
+Memory: 4k page, physical 4192732k(1562804k free), swap 8383600k(4628672k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.65-b01) for windows-amd64 JRE (1.8.0_65-b17), built on Oct  6 2015 16:39:20 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Thu Mar 03 13:44:01 2016
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

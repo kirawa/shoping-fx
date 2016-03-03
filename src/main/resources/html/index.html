@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--title>TestProject</title>
+    <link rel="stylesheet" href="shoping.jar\com\decktop\shoping\html\jquery-ui.css">
+    <script src="shoping.jar\com\decktop\shoping\html\jquery-1.12.1.js"></script>
+    <script src="shoping.jar\com\decktop\shoping\html\jquery-ui.js"></script-->
+   <link rel="stylesheet" type="text/css" href="/html/style.css">
+    <script>
+
+        $(function() {
+            $( "#costWidget" ).draggable();
+            $( "#catWidget" ).draggable();
+            $( "#placesWidget" ).draggable();
+        });
+
+        var appContext;
+        var select_cat_name = "";
+        var select_places_name = "";
+        var cost = 0;
+        function initialize(appContext){
+            this.appContext = appContext;
+            var jsonArray = appContext.getResource();
+            var json = jQuery.parseJSON(jsonArray);
+            var i = 0;
+            for (i; i < json.length; i++){
+                var itemName = json[i].itemName;
+                var catName = json[i].catName;
+                var placesName = json[i].placesName;
+                var itemCost = json[i].itemCost;
+                var catId = json[i].catId;
+                var placesId = json[i].placesId;
+                var time = json[i].time;
+                jQuery(function($) {
+                     $('#mainTable tbody').append('<tr class="cat cat_'+catId+' places_'+placesId+'"><td>'+itemName+'' +
+                             '</td><td>'+catName+'</td><td>'+placesName+
+                             '</td><td class="cost">'+itemCost+'</td><td>'+time+'</td></tr>');
+                });
+            }
+            calcCost();
+        }
+
+
+        function costWidgetController(isChecked){
+            if(!isChecked){
+                $('#costWidget').hide();
+            }else {
+                $('#costWidget').show();
+            }
+
+        }
+
+        function catWidgetController(isChecked){
+            if(!isChecked){
+                $('#catWidget').hide();
+                select_cat_name = '';
+                showFilter();
+            }else {
+                $('#catWidget').show();
+                $('#cat_select').val("0");
+            }
+        }
+
+        function placesWidgetController(isChecked){
+            if(!isChecked){
+                $('#placesWidget').hide();
+                select_places_name = '';
+                showFilter();
+            }else {
+                $('#placesWidget').show();
+                $('#places_select').val("0");
+            }
+        }
+
+        function calcCost() {
+            cost = 0;
+            $('.cost:visible').each(function(i,e){
+                cost = cost + parseFloat($(e).html());
+            });
+            $('#cost').html(cost);
+        }
+
+
+        function showFilter () {
+            if ( select_cat_name == '' && select_places_name == '' ) {
+                $('.cat').show();
+            } else {
+                $('.cat').hide();
+                $(select_cat_name+select_places_name).show();
+            }
+            calcCost();
+        }
+
+        function changeEventHandlerCatWidget(){
+            var catId = $('#cat_select').val();
+            select_cat_name = '.cat_'+catId;
+            catId == 0 ? select_cat_name = '' : false;
+            showFilter();
+        }
+
+        function changeEventHandlerPlacesWidget(){
+            var placesId = $('#places_select').val();
+            select_places_name = '.places_'+placesId;
+            placesId == 0 ? select_places_name = '' : false;
+            showFilter();
+        }
+
+        function closeWidget(w) {
+            if ( w == 'catWidget' ) {
+                select_cat_name = '';
+            }
+
+            if ( w == 'placesWidget' ) {
+                select_places_name = '';
+            }
+            $('#'+w).hide();
+            showFilter();
+            appContext.setDisableCheckMenuItem(w);
+        }
+
+    </script>
+</head>
+<body>
+
+<table class="table table-bordered" border="1" id="mainTable">
+    <tr>
+        <th>Наименование товара</th>
+        <th>Категория товара</th>
+        <th>Место покупки</th>
+        <th>Ценна</th>
+        <th>Дата покупки</th>
+    </tr>
+</table>
+    <div id="costWidget" class="ui-widget-content widget">
+        <p>Колличество потраченных средств<br><br></p>
+        <hr>
+        <p id="cost">0</p>
+        <a class="btn btn-danger closeWidget" onclick="closeWidget('costWidget');">Закрыть</a>
+    </div>
+    <div id="catWidget" class="ui-widget-content widget">
+        <p>Приобретенные категории товаров<br><br></p>
+        <hr>
+        <select class="form-control" id="cat_select" onchange="changeEventHandlerCatWidget();">
+            <option value="0">Все</option>
+            <option value="1">Молочные продукты</option>
+            <option value="2">Хлебобулочные изделия</option>
+            <option value="3">Мясные продукты</option>
+        </select>
+        <a class="btn btn-danger closeWidget" onclick="closeWidget('catWidget');">Закрыть</a>
+    </div>
+    <div id="placesWidget" class="ui-widget-content widget">
+        <p>Места, в которых совершались покупки</p>
+        <hr>
+        <select class="form-control" id="places_select" onchange="changeEventHandlerPlacesWidget();">
+            <option value="0">Все</option>
+            <option value="1">Магнит</option>
+            <option value="2">Пятерочка</option>
+            <option value="3">Любимый город</option>
+        </select>
+        <a class="btn btn-danger closeWidget" onclick="closeWidget('placesWidget');">Закрыть</a>
+    </div>
+</body>
+</html>
